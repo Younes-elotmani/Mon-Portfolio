@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+</head>
+<body>
+<style>
+   
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: #fff;
+    padding: 20px 10%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.logo span { color: #007bff; }
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li { margin-left: 20px; }
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+nav ul li a:hover { color: #007bff; }
+
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1500x800');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.hero h1 span { color: #007bff; }
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.btn:hover { background: #0056b3; }
+.container {
+    padding: 80px 10%;
+    text-align: center;
+}
+
+.bg-light { background-color: #fff; }
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    background: #007bff;
+    height: 3px;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.skills-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.skill-card {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 250px;
+    transition: transform 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    border-bottom: 4px solid #007bff;
+}
+
+footer {
+    padding: 20px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+}
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: #007bff;
+}
+
+.contact-form .btn {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+}
+.about-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap; 
+    margin-top: 30px;
+}
+
+.about-img img {
+    width: 250px; 
+    height: 250px;
+    border-radius: 50%; 
+    object-fit: cover;
+    border: 5px solid #007bff;
+}
+
+.about-text {
+    max-width: 500px;
+    text-align: left;
+}
+/* Style jdid dyal les certificats b tsawer */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.cert-card-img {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.cert-card-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.cert-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Bach sora dyal certificat t-ban kamla */
+    background: #fafafa;
+    padding: 10px;
+}
+
+.cert-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.cert-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.cert-info p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.btn-small {
+    font-size: 12px;
+    padding: 5px 15px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.logo span {
+    color: #007bff;
+}
+
+.logo-img {
+    height: 45px; 
+    width: auto;
+}
+/* Container Mes Projets */
+#projects {
+    padding: 60px 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Card Style */
+.project-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #007bff;
+}
+
+/* Image Style */
+.project-img img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Bach sora t-ched l-blasa kamla */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Info Style */
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Technology Tags */
+.tags {
+    margin-bottom: 20px;
+}
+
+.tags span {
+    background: #e7f3ff;
+    color: #007bff;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Button Style */
+.project-link {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #007bff;
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.project-link:hover {
+    background-color: #0056b3;
+}
+</style>
+    <header>
+        <nav>
+            <div class="logo">Mon<span>Portfolio</span>
+                <img src="developpeur.png" alt="Icon" class="logo-img">
+            </div>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#certificats">Mes Certificats</a></li>
+                <li><a href="#Mes Projets">Mes Projets</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Salut, je suis <span>[EL OTMANI YOUNESS]</span></h1>
+            <p>Développeur Frontend en herbe | Passionné par le Design Web</p>
+            <a href="#contact" class="btn">Me Contacter</a>
+        </div>
+    </section>
+    <section id="about" class="container">
+    <h2 class="section-title">À propos de moi</h2>
+    <div class="about-flex">
+        <div class="about-img">
+            <img src="WhatsApp Image 2025-10-13 à 19.38.48_cbd9f864.jpg" alt="Mon Profil">
+        </div>
+        <div class="about-text">
+            <p>Bonjour ! Je suis Youness El Otmani. Étudiant passionné par le web...</p>
+        </div>
+    </div>
+</section>
+
+    <section id="skills" class="container bg-light">
+        <h2 class="section-title">Mes Compétences</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>HTML5</h3>
+                <p>Structure de page web</p>
+            </div>
+            <div class="skill-card">
+                <h3>CSS3</h3>
+                <p>Design et Mise en page</p>
+            </div>
+            <div class="skill-card">
+                <h3>SQL</h3>
+                <p>Bases de données, Requêtes</p>
+            </div>
+            <div class="skill-card">
+                <h3> JavaScript</h3>
+                <p>DOM, événements</p>
+            </div>
+            <div class="skill-card">
+                <h3> PHP</h3>
+                <p>Gestion côté serveur, Scripts</p>
+            </div>
+            <div class="skill-card">
+                 <h3>Python</h3>
+                 <p>Scripting, Automation, Data</p>
+             </div>
+
+        </div>
+    </section>
+    <section id="certificats" class="container bg-light">
+    <h2 class="section-title">Mes Certificats</h2>
+    <div class="cert-grid">
+        
+        <div class="cert-card-img">
+            <div class="cert-image">
+                <img src="certificat HTML.jpg" alt="Certificat Introduction au HTML">
+            </div>
+            <div class="cert-info">
+                <h3>Introduction au HTML</h3>
+                <p>SoloLearn - Délivré le 09 Janvier 2026</p>
+                <a href="certificat HTML.jpg" target="_blank" class="btn-small">Voir en grand</a>
+            </div>
+        </div>
+        <div class="cert-card-img">
+    <div class="cert-image">
+        <img src="certificat Veb coding.jpg" alt="Certificat Vibe Coding">
+    </div>
+    <div class="cert-info">
+        <h3>Vibe Coding</h3>
+        <p>SoloLearn - Délivré le 03 Janvier 2026</p>
+        <a href="certificat Veb coding.jpg" target="_blank" class="btn-small">Voir en grand</a>
+    </div>
+</div>
+      <div class="cert-card-img">
+    <div class="cert-image">
+        <img src="Certificat to CSS.jpg" alt="Certificat Introduction to CSS">
+    </div>
+    <div class="cert-info">
+        <h3>Introduction to CSS</h3>
+        <p>SoloLearn - Issued 01 February 2026</p>
+        <a href="Certificat to CSS.jpg" target="_blank" class="btn-small">Voir en grand</a>
+    </div>
+</div>
+<div class="cert-card-img">
+            <div class="cert-image">
+                <img src="certificat to SQL .jpg" alt="Certificat Introduction to SQL">
+            </div>
+            <div class="cert-info">
+                <h3>Introduction to SQL</h3>
+                <p>SoloLearn - Délivré le 11 février 2026</p>
+                <a href="certificat to SQL .jpg" target="_blank" class="btn-small">Voir en grand</a>
+            </div>
+        </div>
+        </div>
+</section>
+<section id="projects" class="container">
+    <h2 class="section-title">Mes Projets</h2>
+    
+    <div class="projects-grid">
+        
+        <div class="project-card">
+            <div class="project-img">
+                <img src="livreur.jpg" alt="Application Livraison Market">
+            </div>
+            <div class="project-info">
+                <h3>Application Livraison Market</h3>
+                <p>Une plateforme de commande et de livraison en ligne, optimisée pour le responsive design et l'expérience utilisateur.</p>
+                <div class="tags">
+                    <span>HTML/CSS</span> <span>Netlify</span> <span>Responsive</span>
+                </div>
+                <a href="https://grand-sunburst-c9a2eb.netlify.app" target="_blank" class="project-link">Consulter le Projet</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-img">
+                <img src="logo .jpg" alt="Projet Cabinet Dentaire">
+            </div>
+            <div class="project-info">
+                <h3>Site Web Cabinet Dentaire</h3>
+                <p>Un site vitrine professionnel pour un cabinet dentaire, mettant en avant les services médicaux et la prise de rendez-vous.</p>
+                <div class="tags">
+                    <span>GitHub Pages</span> <span>Medical</span> <span>Vitrine</span>
+                </div>
+                <a href="https://younes-elotmani.github.io/Cabinet-dentaire/" target="_blank" class="project-link">Consulter le Projet</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+    <section id="contact" class="container">
+    <h2 class="section-title">Contactez-moi</h2>
+    <div class="contact-form">
+        <form action="#">
+            <div class="input-group">
+                <input type="text" placeholder="Votre Nom" required>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Votre Email" required>
+            </div>
+            <div class="input-group">
+                <textarea placeholder="Votre Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </div>
+</section>
+
+    <footer>
+        <p>&copy; 2026 - Crée par [EL OTMANI YOUNESS] | Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
